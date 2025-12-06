@@ -65,6 +65,8 @@
     const flavor_ref = {};
     {% for p in current_collection.products %}
         {% assign p_id = p.id %}
+        {% assign p_media = p.images | json %}
+        console.log('{{ p_id }}',{{ p_media }});
         flavor_ref[`{{ p_id }}`] = {}
         flavor_ref[`{{ p_id }}`].description = `{{ p.description }}`;
     {% endfor %}
@@ -106,6 +108,10 @@
         });
         f.classList.add('active-product');
         handleFormChange(f);
+        handleMediaChange(id);
+    }
+    function handleMediaChange(id){
+        
     }
     function handleFormChange(f){
         const atc_form = document.querySelector('form[data-type="add-to-cart-form"]');
