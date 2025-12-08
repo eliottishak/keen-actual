@@ -87,7 +87,13 @@
     font-size:13px;
     text-align:center;
   }
+  #CROProduct-{{ section.id }} .product__media-item{
+    border:1px solid #000;
+  }
   @media(min-width:990px){
+    #CROProduct-{{ section.id }} .product__media-item{
+      border:1px solid #cccccc;
+    }
     #CROProduct-{{section.id }} .product__description-wrapper{
       order:3;
       border-radius:0 0 10px 10px;
