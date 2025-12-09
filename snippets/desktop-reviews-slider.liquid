@@ -11,7 +11,7 @@
         display:flex;
         width:100%;
         justify-content:space-between;
-        align-items:center;
+        align-items:flex-start;
     }
     #desktop-reviews-slider .review-thumb{
         border-radius:100%;
@@ -19,6 +19,7 @@
         flex-direction:column;
         overflow:hidden;
         width:66px;
+        align-self:center;
     }
     #desktop-reviews-slider .card-content{
         width:calc(100% - 80px);
@@ -66,6 +67,18 @@
     #desktop-reviews-slider .swiper-pagination-bullet-active{
         background:#E2362E;
     }
+    #desktop-reviews-slider .swiper-wrapper{
+        display:flex;
+        align-items:stretch;
+    }
+    #desktop-reviews-slider .swiper-slide{
+        height:auto !important;
+        display:flex;
+    }
+    #desktop-reviews-slider .card-container{
+        
+        height:100%;
+    }
     @media(max-width:989px){
         #desktop-reviews-slider{
             display:none;
@@ -110,10 +123,31 @@
                         </div>
                     </div>
                     <div class="testimonial-quote">
-                        "These are just so good. The Tandoori Ranch one was my absolute favorite, I want to be able to buy a shaker of the seasonings."
+                        “Amazing taste right amount of spice can’t get them fast enough"
                     </div>
                     <div class="testimonial-name">
-                        - Brittany
+                        - Shrinivasan
+                    </div>
+                </div>
+            </div>
+            <div class="card-container swiper-slide">
+                <div class="review-thumb">
+                    <img src="https://cdn.shopify.com/s/files/1/0641/9169/2992/files/review-customer.png?v=1765040330">
+                </div>
+                <div class="card-content">
+                    <div class="review-stars">
+                        <div class="rev-stars">
+                            {% render 'review-stars' %}
+                        </div>
+                        <div class="verified">
+                            {% render 'verified-check' %} VERIFIED PURCHASE
+                        </div>
+                    </div>
+                    <div class="testimonial-quote">
+                        “All three are SO deliscious! Each spice blend is unique and the crunch is addicting. My personal favorite is Sweet Chili Masala"
+                    </div>
+                    <div class="testimonial-name">
+                        - Paui
                     </div>
                 </div>
             </div>
@@ -125,6 +159,7 @@
     document.addEventListener('DOMContentLoaded',function(){
         const desktop_reviews = new Swiper('#desktop-reviews-slider .swiper',{
             loop:false,
+            spaceBetween:15,
             pagination:{
                 el:".swiper-pagination",
                 clickable:true

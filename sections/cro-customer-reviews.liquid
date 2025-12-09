@@ -11,12 +11,13 @@
         padding:20px;
         display:flex;
         width:100%;
-        justify-content:center;
+        justify-content:flex-start;
         align-items:center;
         flex-direction:column;
         gap:20px;
         max-width:425px;
         margin:0 auto;
+        height:100%;
     }
     #cust-reviews-{{section.id }} .testimonial-quote{
         text-align:center;
@@ -36,32 +37,133 @@
             opacity:0.7;
         }
     }
+    #cust-reviews-{{ section.id }} .swiper-pagination{
+        margin-top:20px;
+    }
+    #cust-reviews-{{ section.id }} .swiper-pagination-bullet{
+        background:#D9D9D9;
+        width:8px;
+        height:8px;
+        border-radius:20px;
+        border:none;
+    }
+    #cust-reviews-{{ section.id }} .swiper-pagination-bullet-active{
+        background:#E2362E;
+    }
+    #cust-reviews-{{ section.id }} .swiper-wrapper{
+        display:flex;
+        align-items:stretch;
+    }
+    /* Make each slide flex-grow so it fills height */
+    #cust-reviews-{{ section.id }} .swiper-slide {
+        height: auto !important; /* Let flexbox decide */
+        display: flex; 
+    }
+
+    /* Make inner card stretch to full height */
+    #cust-reviews-{{ section.id }} .card-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+    }
+    #cust-reviews-{{ section.id }} .height-grow{
+        display:inline-flex;
+    }
+    #cust-reviews-{{ section.id }} .test-bottom{
+        display:inline-flex;
+        flex-direction:column;
+        gap:20px;
+        margin-top: auto;
+        align-items: center;
+    }
     @media(min-width:989px){
         #cust-reviews-{{section.id }}{
             display:none;
         }
-        
     }
 </style>
 <div id="cust-reviews-{{ section.id }}">
-    <div class="card-container">
-        <div class="card-pic">
-            <img src="{{ section.settings.card_pic | image_url }}">
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="height-grow swiper-slide">
+                <div class="card-container">
+                    <div class="card-pic">
+                        <img src="https://cdn.shopify.com/s/files/1/0641/9169/2992/files/review-customer.png?v=1765040330">
+                    </div>
+                    <div class="review-stars">
+                        {% render 'review-stars' %}
+                    </div>
+                    <div class="testimonial-quote">
+                        "These are just so good. The Tandoori Ranch one was my absolute favorite, I want to be able to buy a shaker of the seasonings."
+                    </div>
+                    <div class="test-bottom">
+                        <div class="testimonial-name">
+                            - Brittany
+                        </div>
+                        <div class="verified">
+                            {% render 'verified-check' %} VERIFIED PURCHASE
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="height-grow swiper-slide">
+                <div class="card-container">
+                    <div class="card-pic">
+                        <img src="https://cdn.shopify.com/s/files/1/0641/9169/2992/files/review-customer.png?v=1765040330">
+                    </div>
+                    <div class="review-stars">
+                        {% render 'review-stars' %}
+                    </div>
+                    <div class="testimonial-quote">
+                        “Amazing taste right amount of spice can’t get them fast enough"
+                    </div>
+                    <div class="test-bottom">
+                        <div class="testimonial-name">
+                            - Shrinivasan
+                        </div>
+                        <div class="verified">
+                            {% render 'verified-check' %} VERIFIED PURCHASE
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="height-grow swiper-slide">
+                <div class="card-container">
+                    <div class="card-pic">
+                        <img src="https://cdn.shopify.com/s/files/1/0641/9169/2992/files/review-customer.png?v=1765040330">
+                    </div>
+                    <div class="review-stars">
+                        {% render 'review-stars' %}
+                    </div>
+                    <div class="testimonial-quote">
+                        “All three are SO deliscious! Each spice blend is unique and the crunch is addicting. My personal favorite is Sweet Chili Masala"
+                    </div>
+                    <div class="test-bottom">
+                        <div class="testimonial-name">
+                            - Paui
+                        </div>
+                        <div class="verified">
+                            {% render 'verified-check' %} VERIFIED PURCHASE
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <div class="review-stars">
-            {% render 'review-stars' %}
-        </div>
-        <div class="testimonial-quote">
-            "{{ section.settings.testimonial_quote }}"
-        </div>
-        <div class="testimonial-name">
-            - {{ section.settings.testimonial_name }}
-        </div>
-        <div class="verified">
-            {% render 'verified-check' %} VERIFIED PURCHASE
-        </div>
+        <div class="swiper-pagination"></div>
     </div>
 </div>
+<script>
+    document.addEventListener('DOMContentLoaded',function(){
+        const mobileCards = new Swiper('#cust-reviews-{{ section.id }} .swiper',{
+            loop:true,
+            spaceBetween:15,
+            pagination:{
+                el:".swiper-pagination",
+                clickable:true
+            }
+        })
+    })
+</script>
 {% schema %}
 {
     "name":"CRO Customer Reviews",
