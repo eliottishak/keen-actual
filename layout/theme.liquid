@@ -401,7 +401,7 @@
     {%- endif -%}
     <script src="{{ 'product-model.js' | asset_url }}" defer></script>
     <script>console.log({{ template | json }})</script>
-    {% if template == 'product.product-cro' %}
+    {% if template == 'product.product-cro' or template == 'product.product-cro-variants' %}
       {%- render 'cro-pdp-sticky-atc' -%}
     {% endif %}
   </body>

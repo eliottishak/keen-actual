@@ -1,28 +1,36 @@
 <style>
-    #cro-pdp-sticky-atc{
-        position:fixed;
-        bottom:0;
-        z-index:9;
+    #cro-pdp-sticky-atc {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        z-index: 9;
         padding: 1em 2.4em;
         width: 100%;
-        background-color:#fff;
-        box-shadow:0px 0px 10px rgba(0, 0, 0, 0.15);
+        background-color: #fff;
+        box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+        transform: translateY(100%);
+        transition: transform 0.3s ease-in-out;
+        will-change: transform;
     }
-    #cro-pdp-sticky-atc .sticky-atc{
-        background:#23E129;
-        width:100%;
-        color:#000;
-        font-weight:bold;
-        font-size:calc(1.6 * 1rem);
-        padding:14px;
-        border:2px solid #000;
-        border-radius:50px;
+    #cro-pdp-sticky-atc.visible {
+        transform: translateY(0) !important;
+    }
+    #cro-pdp-sticky-atc .sticky-atc {
+        background: #23E129;
+        width: 100%;
+        color: #000;
+        font-weight: bold;
+        font-size: calc(1.6 * 1rem);
+        padding: 14px;
+        border: 2px solid #000;
+        border-radius: 50px;
         box-shadow: 0px 4px 0 #000;
         font-weight: bolder;
+        cursor: pointer;
     }
-    @media(min-width:990px){
-        #cro-pdp-sticky-atc{
-            display:none;
+    @media(min-width: 990px) {
+        #cro-pdp-sticky-atc {
+            display: none !important;
         }
     }
 </style>
@@ -30,31 +38,31 @@
     <button class="sticky-atc">Add to Cart</button>
 </div>
 <script>
-    function hideWhenInView(targetSelector, elementToHideSelector, options = {}) {
-        const target = targetSelector;
-        const elementToHide = elementToHideSelector;
+    document.addEventListener('DOMContentLoaded', function() {
+        const stickyContainer = document.getElementById('cro-pdp-sticky-atc');
+        const stickyBtn = stickyContainer ? stickyContainer.querySelector('.sticky-atc') : null;
+        const formBtn = document.querySelector('product-form .product-form__submit');
 
-        if (!target || !elementToHide) return;
+        if (!stickyContainer || !formBtn || !stickyBtn) return;
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+        // Click handler - trigger the form button
+        stickyBtn.addEventListener('click', function() {
+            formBtn.click();
+        });
+
+        // Hide/show based on form button visibility
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
                 if (entry.isIntersecting) {
-                    elementToHide.style.display = "none";     // Hide
+                    // Form button is visible - hide sticky
+                    stickyContainer.classList.remove('visible');
                 } else {
-                    elementToHide.style.display = "";         // Show (revert)
+                    // Form button is not visible - show sticky
+                    stickyContainer.classList.add('visible');
                 }
             });
-        }, options);
+        }, { threshold: 0 });
 
-        observer.observe(target);
-    }
-
-    document.addEventListener('DOMContentLoaded',function(){
-        const sticky_btn = document.querySelector('#cro-pdp-sticky-atc .sticky-atc');
-        const form_btn = document.querySelector('product-form .product-form__submit');
-        sticky_btn.addEventListener('click',function(){
-            form_btn.click();
-        });
-        hideWhenInView(form_btn,sticky_btn,{});
-    })
+        observer.observe(formBtn);
+    });
 </script>
