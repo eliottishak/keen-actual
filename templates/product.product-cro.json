@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "main_product_cro_enajbC": {
@@ -5,7 +14,9 @@
       "blocks": {
         "review_wMM6N6": {
           "type": "review",
-          "settings": {}
+          "settings": {
+            "text": "4.4 Average (50+ Reviews)"
+          }
         },
         "title": {
           "type": "title",
@@ -22,7 +33,13 @@
         "image_QPYcdY": {
           "type": "image",
           "settings": {
-            "image": "shopify:\/\/shop_images\/nutrition-highlights.png"
+            "image": "shopify://shop_images/nutrition-highlights.png"
+          }
+        },
+        "short_description_6BBwaR": {
+          "type": "short_description",
+          "settings": {
+            "short_description": "The low-carb, protein and fiber packed snack that keeps you full."
           }
         },
         "description": {
@@ -75,6 +92,7 @@
         "title",
         "price",
         "image_QPYcdY",
+        "short_description_6BBwaR",
         "description",
         "flavor_picker_8NFdei",
         "variant_picker",
@@ -82,6 +100,7 @@
         "inventory",
         "buy_buttons"
       ],
+      "custom_css": [],
       "name": "Main Product CRO",
       "settings": {
         "color_scheme": "background-2",
@@ -99,7 +118,7 @@
       "type": "cro-customer-reviews",
       "name": "CRO-Customer",
       "settings": {
-        "card_pic": "shopify:\/\/shop_images\/review-customer.png",
+        "card_pic": "shopify://shop_images/review-customer.png",
         "testimonial_quote": "These are just so good. The Tandoori Ranch one was my absolute favorite, I want to be able to buy a shaker of the seasonings.",
         "testimonial_name": "Brittany"
       }
@@ -197,7 +216,7 @@
           "type": "accordion",
           "settings": {
             "question": "SHIPPING",
-            "answer": "<p>Some desAll products are made in small batches in Los Angeles, CA and shipped every two weeks. We strive to get your order out quickly, but please allow us some time to get you the best quality snack possible! cription<\/p>",
+            "answer": "<p>Some desAll products are made in small batches in Los Angeles, CA and shipped every two weeks. We strive to get your order out quickly, but please allow us some time to get you the best quality snack possible! cription</p>",
             "opened": false
           }
         }
@@ -238,7 +257,7 @@
         "button_show": true,
         "button_label": "SHOP ALL",
         "button_style": "primary",
-        "button_link": "shopify:\/\/collections\/all",
+        "button_link": "shopify://collections/all",
         "button_arrow": false,
         "padding_top": "no-indent",
         "padding_bottom": "xl"
@@ -248,7 +267,7 @@
       "type": "apps",
       "blocks": {
         "instafeed_app_block_dg3L9t": {
-          "type": "shopify:\/\/apps\/instafeed\/blocks\/app-block\/c447db20-095d-4a10-9725-b5977662c9d5",
+          "type": "shopify://apps/instafeed/blocks/app-block/c447db20-095d-4a10-9725-b5977662c9d5",
           "settings": {
             "title": "",
             "title_color": "",
@@ -279,8 +298,8 @@
       "name": "CRO Hero",
       "settings": {
         "title": "WHY CUSTOMERS LOVE DAAL",
-        "hero_text": "<ul><li>Extreme crunch. Extreme flavor.<\/li><li>Up to 27g protein and up to 9g fiber per bag.<\/li><li>Ready for backpacks, desks, and road trips.<\/li><li>Indian-American fusion that actually tastes like something new.<\/li><\/ul>",
-        "hero_img_mobile": "shopify:\/\/shop_images\/mobile-hero.png"
+        "hero_text": "<ul><li>Extreme crunch. Extreme flavor.</li><li>Up to 27g protein and up to 9g fiber per bag.</li><li>Ready for backpacks, desks, and road trips.</li><li>Indian-American fusion that actually tastes like something new.</li></ul>",
+        "hero_img_mobile": "shopify://shop_images/mobile-hero.png"
       }
     },
     "product_recommendations_cro_kX3NUR": {

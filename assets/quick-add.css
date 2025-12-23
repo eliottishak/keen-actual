@@ -385,3 +385,25 @@
   left: 1.6rem;
   right: 1.6rem;
 }
+
+/* Hide quantity-input in quick-add modal since dropdown-qty is used instead */
+.quick-add-modal quantity-input {
+  display: none;
+}
+
+/* Ensure dropdown-qty has proper width in quick-add modal */
+.quick-add-modal #dropdown-qty {
+  min-width: 140px;
+}
+
+/* Fix product-form__buttons-row layout in quick-add modal */
+.quick-add-modal .product-form__buttons-row {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  gap: 1rem;
+}
+
+.quick-add-modal .product-form__quantity {
+  flex: 0 0 auto;
+}

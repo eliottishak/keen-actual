@@ -232,11 +232,7 @@
         endif
       %}
 
-      {%- if settings.add_to_cart_enabled
-        and product_card_product.selected_or_first_available_variant.available
-        and product_card_product.has_only_default_variant
-        or has_color_swatches
-      -%}
+      {%- if settings.add_to_cart_enabled and product_card_product.selected_or_first_available_variant.available -%}
         {%- assign product_form_id = 'quick-add-' | append: section_id | append: product_card_product.id -%}
         <product-form class="card__add-to-cart card__button">
           {%- form 'product',
@@ -372,7 +368,9 @@
           <a class="full-unstyled-link" href="{{ product_card_product.url | default: '#' }}">
             {{- product_card_product.title | escape -}}
           </a>
-          <div class='opinew-stars-plugin-product-list'>{% render 'opinew_review_stars_lists' product:product_card_product %}</div>
+          <div class="opinew-stars-plugin-product-list">
+            {% render 'opinew_review_stars_lists', product: product_card_product %}
+          </div>
         </h3>
         {%- if show_desc and product_card_product.description != blank -%}
           <div class="card__description">

@@ -1,0 +1,161 @@
+<style>
+    #mc-cards-{{ section.id }}{
+        background:#fff;
+        padding:70px 0;
+        position:relative;
+    }
+    #mc-cards-{{ section.id }} .cards-row{
+        display:grid;
+        grid-template-columns:repeat(1,1fr);
+        gap:15px;
+        padding:40px 0;
+    }
+    #mc-cards-{{ section.id }} .card{
+        padding:30px;
+        border-radius: 20px;
+        background: #fff;
+        border:2px solid #000;
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+        max-width:100%;
+        width:100%;
+    }
+    #mc-cards-{{ section.id }} .card-img{
+        margin-bottom:25px;
+        width:65px;
+        img{
+            width:100%;
+        }
+    }
+    #mc-cards-{{ section.id }} .card-title{
+        color: #000;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 19px; /* 95% */
+        text-transform: uppercase;
+        margin-bottom:10px;
+    }
+    #mc-cards-{{ section.id }} .card-description{
+        color: #000;
+        font-size: 15px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 23px; /* 153.333% */
+    }
+    #mc-cards-{{ section.id }} .section-title.h2{
+        color: #000;
+        font-size: 35px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 40px; /* 114.286% */
+        text-transform: uppercase;
+        text-align:center;
+    }
+    #mc-cards-{{ section.id }} .mobile-wave{
+        position: absolute;
+        width: 100vw;
+        bottom: -1px;
+        left: -50%;
+        transform: translateX(50%);
+        svg{
+            width:100%;
+        }
+    }
+    @media(min-width:990px){
+        #mc-cards-{{ section.id }}{
+            padding:120px 0;
+        }
+        #mc-cards-{{ section.id }} .cards-row{
+            grid-template-columns:repeat(4,1fr);
+        }
+        #mc-cards-{{ section.id }} .mobile-wave{
+            display:none;
+        }
+        #mc-cards-{{ section.id }} .section-title.h2{
+            font-size:50px;
+            line-height:40px; 
+        }
+        #mc-cards-{{ section.id }} .card-title{
+            font-size:27px;
+            line-height:28px;
+        }
+        #mc-cards-{{ section.id }} .card-description{
+            font-size:16px;
+            line-height:23px;
+        }
+        #mc-cards-{{ section.id }} .card-img{
+            width:125px;
+            height:125px;
+        }
+        #mc-cards-{{ section.id }} .card{
+            padding:55px 40px;
+        }
+    }
+</style>
+<div id="mc-cards-{{ section.id }}">
+    <div class="container">
+        <h2 class="section-title h2">{{ section.settings.title }}</h2>
+        <div class="cards-row">
+            {% for block in section.blocks %}
+                <div class="card">
+                    <div class="card-img">
+                        {% if block.settings.img != blank %}
+                            <img src="{{ block.settings.img | image_url }}">
+                        {% endif %}
+                        {% comment %} <img src="{{ block.settings.img | image_url }}" alt="{{ block.settings.title }}"> {% endcomment %}
+                    </div>
+                    <div class="card-title h2">
+                        {{ block.settings.title }}
+                    </div>
+                    <div class="card-description">
+                        {{ block.settings.description }}
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% schema %}
+{
+    "name":"Multicolumn Cards",
+    "presets":[
+        {
+            "name":"Multicolumn Cards"
+        }
+    ],
+    "settings": [
+        {
+            "type":"text",
+            "id": "title",
+            "label":"Title",
+            "default":"WHY DAAL IS LOVED"
+        }
+    ],
+    "blocks": [
+        {
+            "type": "card",
+            "limit": 4,
+            "name":"Card",
+            "settings":[
+                {
+                    "type": "image_picker",
+                    "id": "img",
+                    "label": "Image"
+                },
+                {
+                    "type": "text",
+                    "id": "title",
+                    "label": "Title"
+                },
+                {
+                    "type": "text",
+                    "label": "description",
+                    "id": "description"
+                }
+            ]
+        }
+    ]
+}
+{% endschema %}

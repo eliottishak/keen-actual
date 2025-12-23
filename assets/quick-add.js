@@ -79,6 +79,8 @@ if (!customElements.get("quick-add-modal")) {
             );
             this.productElement = responseHTML.querySelector(
               'section[id^="MainProduct-"]'
+            ) || responseHTML.querySelector(
+              'section[id^="CROProduct-"]'
             );
             this.preventDuplicatedIDs();
             this.removeDOMElements();

@@ -358,13 +358,18 @@
 }
 .cart-drawer__buttons .button--transparent {
   border: 0.1rem solid rgba(var(--color-foreground));
+  display:none;
+}
+.cart-drawer__buttons #CartDrawer-Checkout{
+  border:1px solid #000;
+  box-shadow: 0px 4px 0 #000;
 }
 @media screen and (min-width: 576px) {
   .cart-drawer__buttons {
     flex-direction: row;
   }
   .cart-drawer__buttons .button {
-    width: calc(50% - 0.3rem);
+    width: 100%;
   }
 }
 .cart-drawer .tax-note {
